@@ -1,0 +1,44 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-center>
+            Lista de empaques
+        </ion-title>
+    </ion-navbar>
+
+
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngFor="let x of Empaque">
+        <ion-item>
+                <h1>
+                    <b>Nombre:</b> {{x.producto.nombre_comun}}</h1>
+                <h2>
+                    <b>Talla:</b> {{x.talla.talla}}</h2> 
+                    <div *ngIf="x.calidad" >
+                       <h2> <b>Calidad:</b>{{x.calidad.nombre}}</h2>
+                    </div>
+                        <ion-note item-end>
+                           <h2> <b>Hora: </b> {{x.fecha | date: "shortTime"}}
+                            </h2><br>
+                            <h2> <b>Peso: </b> {{x.peso}} {{x.unidad_medida}}</h2>
+                            </ion-note>
+                <!--<p>
+                    <b>Calidad:</b> {{x.calidad.nombre}}</p> -->
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="100px">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="Agregar()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

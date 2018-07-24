@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Agregar otro producto
+    </ion-title>
+  </ion-navbar>
+</ion-header>>
+
+
+<ion-content padding>
+<div class="center">
+  
+  <h1> <b> Distribuidor: </b> {{lista.distribuidor.nombre}} {{lista.distribuidor.apellido}}</h1>
+
+
+  <form [formGroup]="formularioCompra" novalidate>
+
+ 
+
+    <div >
+
+      <ion-item style="font-size:22px;">
+        <ion-label>Producto</ion-label>
+        <ion-select formControlName="producto"  interface="popover">
+          <ion-option *ngFor="let Pr of Producto" [value]="Pr.id">{{Pr.nombre_comun}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div >
+
+      <ion-item style="font-size:22px;">
+        <ion-label>Medida</ion-label>
+        <ion-select formControlName="tamano"  interface="popover">
+          <ion-option *ngFor="let Ta of Talla" [value]="Ta.id">{{Ta.talla}}</ion-option>
+
+        </ion-select>
+      </ion-item>
+     <!-- <ion-item [hidden]="!carga">-->
+      <ion-item  style="font-size:22px;">
+        <ion-label>Calidad</ion-label>
+        <ion-select formControlName="calidad" class="texto2" interface="popover">
+          <ion-option *ngFor="let Ca of Calidad" [value]="Ca.id">{{Ca.nombre}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+       
+    <div class="row">
+        <div class="col col-50">
+            <button ion-button outline (click)="LeerPeso()">Leer Peso</button>
+        </div>
+      <div class="col col-50">
+        <ion-input class="peso" formControlName="pesorequired" [(ngModel)]="TEXTO" [readonly]="true" type="text" text-center></ion-input>
+      </div>
+    </div>
+
+
+    <div class="buttons">
+      <button ion-button color="personalizado3" (click)="GuardaryContinuar()" [disabled]="formularioCompra.invalid">Guardar y Continuar</button>
+      <button ion-button color="personalizado1" (click)="Guardar()" [disabled]="formularioCompra.invalid">Guardar y cerrar</button>
+      <button ion-button color="personalizado2" (click)="Cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
+</ion-content>

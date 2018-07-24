@@ -1,0 +1,27 @@
+<ion-content padding>
+    <div class="center">
+        <img class="" src="assets/imgs/logoinit8-01.png">
+        <h4 class="tx">Sistema para Automatización y Control de Pesaje</h4>
+        <h4 class="text2">Version {{version}} </h4>
+
+        <form [formGroup]="SecionForm" (ngSubmit)="login()" novalidate>
+            <ion-item>
+                <ion-label class="text" floating>Usuario</ion-label>
+                <ion-input formControlName="username" type="text" color="dark"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="SecionForm.get('username').errors && SecionForm.get('username').dirty" >
+                <p style="font-size: 14px;" color="danger" ion-text *ngIf="SecionForm.get('username').hasError('required')">es requerido</p>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text" floating>Contraseña</ion-label>
+                <ion-input formControlName="password" type="password" color="secondary"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="SecionForm.get('password').errors && SecionForm.get('password').dirty">
+                <p style="font-size: 14px;" color="danger" ion-text *ngIf="SecionForm.get('password').hasError('required')">es requerido</p>
+            </ion-item>
+            <div padding>
+                <button ion-button block color="danger" type="submit" [disabled]="SecionForm.invalid">Entrar</button>
+            </div>
+        </form>
+    </div>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Lista de Compras
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-list *ngFor="let x of compras" >
+    <ion-item (click)="Info(x)" [hidden]="!carga" >
+    <!--  <ion-avatar item-start>
+        <img src="">
+      </ion-avatar>-->
+      <h1><b>Folio-Nota:</b> {{x.id}}</h1>
+      <h2><b>Lote:</b> {{x.lote}}</h2>
+      <h2><b>Proveedor:</b> {{x.proveedor.nombre}} </h2>
+      <ion-note item-end>
+        
+        <h3>  <b>Hora:</b> <br> {{x.fecha | date: "shortTime"}} </h3>
+        
+      </ion-note>
+      
+    </ion-item>
+
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="100px">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" ><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab color="personalizado3" *ngFor="let x of categoria" (click)="Agregar(x.id)" >        
+        <img [alt]="x.nombre" [src]=x.icono>    
+      </button>
+    </ion-fab-list> 
+  </ion-fab>
+
+  
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">Cerrar</button>
+      </ion-buttons>
+      <ion-title>Detalle de empaques</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+  <p>
+    Empaques ubicados en la fila {{data.fila}} y columna {{data.columna}}
+  </p>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let emp of data.empaques">
+      <ion-item>
+        <ion-label> {{emp.empaque.producto?.nombre_comun}} {{ emp.empaque.calidad?.nombre }} {{emp.empaque.talla?.talla}} </ion-label>
+        <ion-note item-end>
+          <b>Hora: </b> {{emp.empaque.fecha | date: "shortTime"}}
+          <br>
+          <b>Peso: </b> {{emp.empaque.peso}}
+        </ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="remove(emp)">
+          <ion-icon name="trash"></ion-icon>
+          Quitar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

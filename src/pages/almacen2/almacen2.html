@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Agregar anaquel
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="formulario" novalidate>
+  <ion-item style="font-size:22px;">
+    <ion-label>Anaquel:</ion-label>
+   
+      <ion-select formControlName="anaquel"  interface="popover" [disabled]="activar">
+        <ion-option *ngFor="let x of bodega" [value]="x" >{{x.filas}}X{{x.columnas}}</ion-option>
+      </ion-select>
+
+  </ion-item>
+  <ion-item style="font-size:22px;">
+    <ion-label>Lote:</ion-label>
+    <ion-select formControlName="lote" interface="popover" [disabled]="activar">
+      <ion-option *ngFor="let l of lote" [value]="l">{{l.lote}}</ion-option>
+    </ion-select>
+  </ion-item>
+    <ion-item style="font-size:22px;">
+      <ion-label >Congelador:</ion-label>
+      <ion-select  formControlName="congelador" interface="popover" [disabled]="activar">
+        <ion-option *ngFor="let c of congelador" [value]="c.id">{{c.numero}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+  <button [hidden]="show2" ion-button color="personalizado1" (click)="Guardar()" [disabled]="formulario.invalid">Iniciar anaquel</button>
+  </form>
+
+
+
+  <ion-grid  [hidden]="!show">
+    <ion-row *ngFor="let rows of matriz;" >
+      <ion-col *ngFor="let item of rows;">
+        <button ion-button  outline [color]="item.color" value="{{item.fila}}+','+{{item.columna}}" (click)="ejemplo(item)" >
+          <ion-icon [name]="item.icon"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

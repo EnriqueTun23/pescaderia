@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Configuracion
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding text-center>
+  <form [formGroup]="formulario" (ngSubmit)="Guardar()" novalidate>
+  <ion-item style="font-size:22px;">
+    <ion-label fixed>Url</ion-label>
+    <ion-input type="url" formControlName="url" [value]="Url"></ion-input>
+  </ion-item>
+  <ion-item style="font-size:22px;">
+    <ion-label fixed>Client Id</ion-label>
+    <ion-input formControlName="cliente_id" [value]="Cliente_id"></ion-input>
+  </ion-item>
+    <ion-item style="font-size:22px;">
+      <ion-label fixed>Bodega</ion-label>
+      <ion-select formControlName="id_bodega" [placeholder]="Bodega_nombre">
+        <ion-option *ngFor="let bodega of Bodega" [value]="bodega.id">{{bodega.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="formulario.invalid"  >Guardar</button>
+  </form>
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+        Productos comprados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!--    <ion-item no-border [hidden]="!activar">
+        <ion-label>Proveedor</ion-label>
+        <ion-select [(ngModel)]="Valor_proveedor" [disabled]="selec" interface="popover" >
+          <ion-option *ngFor="let y of Proveedor" [value]="y.id">{{y.nombre}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item no-border [hidden]="!activar">
+        <ion-label>Distribuidor</ion-label>
+        <ion-select [(ngModel)]="Valor_distribuidor" [disabled]="selec" interface="popover">
+          <ion-option *ngFor="let x of Distribuidor" [value]="x.id">{{x.nombre}} {{x.apellido}}</ion-option>
+        </ion-select>
+      </ion-item> -->
+<!--******************************Prueba de modal************************************* -->
+            <ion-item no-border (click)="Provedor_modal()" [hidden]="!activar" style="font-size:22px;" >
+              <ion-label>Proveedor: {{nombre_provedor}}</ion-label>
+              
+            </ion-item>
+            <ion-item no-border (click)="Distribuidor_modal()" [hidden]="!activar" style="font-size:22px;">
+              <ion-label>Distribuidor: {{nombre_distribuidor}}</ion-label>
+            
+            </ion-item>
+
+<!-- ********************************************************************** -->     
+        <ion-item-divider color="personalizado3" [hidden]="carga">
+          <ion-item >
+            <h1><b>Folio: </b>  {{folio}}</h1>
+            <h2><b>Lote: </b> {{lote}} </h2>
+            <h2><b> Proveedor: </b>  {{nuevo2}} </h2>
+            
+            <h2><b> Distribuidor: </b>  {{nuevo}} </h2>
+          </ion-item>
+        </ion-item-divider>
+     <ion-list *ngFor="let x of compras">
+    
+        <ion-item [hidden]="carga">
+          <h1><b>Producto:</b> {{x.producto.nombre_comun}}</h1>
+          <h2><b>Talla:</b> {{x.talla.talla}}</h2>
+          <h2><b>Calidad:</b> {{x.calidad.nombre}}</h2>
+          <ion-note item-end>
+            <h2> <b>Hora: </b> {{x.fecha | date: "shortTime"}}
+            </h2><br>
+            <h2> <b>Peso: </b> {{x.peso}} </h2>
+          </ion-note>
+        </ion-item>
+    </ion-list>
+
+      <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="add()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-fab>
+</ion-content>

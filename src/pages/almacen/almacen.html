@@ -1,0 +1,39 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Anaqueles
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list *ngFor="let LA of list_anaquel" >
+    <ion-item (click)="anaquelEdit(LA.id)">
+      <h1><b>Anaquel:</b> {{LA.numero}}</h1>
+      <h2><b>Lote:</b>{{LA.lote}}</h2>
+      <h2><b>Congelador:</b>{{LA.congelador.id}}</h2>
+      <ion-note item-end>
+        
+        <h2>  <b>Hora:{{LA.fecha | date:"shortTime"}}</b> </h2><br>
+        <h2>  <b>Peso: {{LA.peso}}</b> </h2>
+
+        
+      </ion-note>
+    </ion-item>
+  </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="100px">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
+
+

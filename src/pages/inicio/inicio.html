@@ -1,0 +1,78 @@
+
+
+
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Compra de {{categoria.nombre}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+ <div class="center"> 
+  <!--<form [formGroup]="formularioCompra" (ngSubmit)="Guardar()" novalidate>>-->
+    <h1>Distribuidor:</h1><h2>{{distribuidor.nombre}} {{distribuidor.apellido}}</h2>
+    
+    
+    <form [formGroup]="formularioCompra"  novalidate>
+
+ <!-- <div class="contenedor">
+    <ion-label class="texto">Categoria</ion-label>
+    <ion-item class="sel">
+      <ion-select class="select" okText="Okay" cancelText="Dismiss" interface="popover" (ionChange)="Search($event)" formControlName="categoria">
+        <ion-option *ngFor="let Ct of Categoria" [value]="Ct.id">{{Ct.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div> -->
+
+  <div class="contenedor">
+    
+      <ion-item style="font-size:22px;" >
+        <ion-label >Producto</ion-label>
+        <ion-select   formControlName="producto"  interface="popover">
+          <ion-option *ngFor="let Pr of Producto" [value]="Pr.id">{{Pr.nombre_comun}}</ion-option>
+        </ion-select>
+    </ion-item>
+  </div>
+  <div class="contenedor">
+    
+      <ion-item style="font-size:22px;">
+        <ion-label >Medida</ion-label>
+        <ion-select   formControlName="tamano" interface="popover">
+          <ion-option  *ngFor="let x of categoria.talla" [value]="x.id">{{x.talla}}</ion-option>
+         
+        </ion-select>
+      </ion-item>
+      <ion-item [hidden]="!carga" style="font-size:22px;">
+        <ion-label>Calidad</ion-label>
+        <ion-select formControlName="calidad" interface="popover">
+          <ion-option *ngFor="let x of categoria.calidad" [value]="x.id">{{x.nombre}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+  </div>
+
+  <div class="row">
+      <div class="col col-50">
+          <button ion-button outline (click)="LeerPeso()">Leer Peso</button>
+      </div>
+    <div class="col col-50">
+      <ion-input class="peso" formControlName="pesorequired" [(ngModel)]="TEXTO" [readonly]="true" type="text" text-center></ion-input>
+    </div>
+  </div>
+    
+      
+  <div>
+    <button ion-button color="personalizado3" (click)="GuardaryContinuar()" [disabled]="formularioCompra.invalid">Guardar y Continuar</button>
+    <button ion-button color="personalizado1" (click)="Guardar()" [disabled]="formularioCompra.invalid" >Guardar y cerrar</button>
+    <button ion-button color="personalizado2" (click)="Cancelar()">Cancelar</button>
+  </div>
+  </form>
+</div>
+</ion-content>

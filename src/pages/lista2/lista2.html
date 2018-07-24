@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Productos comprados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-item-divider color="personalizado3">
+  <ion-item >
+    <h1>
+        <b>Folio: </b> <span>  {{lista.id}}</span></h1>
+    <h1>
+        <b>Lote: </b> <span>  {{lista.lote}}</span></h1>
+    <h1>
+      <b>Proveedor: </b> <span>  {{lista.proveedor.nombre}}</span></h1>
+    <h1>
+      <b>Distribuidor:</b> <span>  {{lista.distribuidor.nombre}} {{lista.distribuidor.apellido}}</span></h1>
+  </ion-item>
+</ion-item-divider>
+<ion-list *ngFor="let x of compras">
+
+  <ion-item>
+    <h1>
+      <b>Producto:</b> {{x.producto.nombre_comun}}</h1>
+    <h2>
+      <b>Talla:</b> {{x.talla.talla}}</h2>
+    <h2>
+      <b>Calidad:</b> {{x.calidad.nombre}}</h2>
+    <ion-note item-end>
+      <h3>Hora:  {{x.fecha | date: "shortTime"}}<br> </h3>
+      <h3>Peso:  {{x.peso}} </h3>
+    </ion-note>
+  </ion-item>
+</ion-list> 
+<ion-fab right bottom>
+  <button ion-fab color="primary" (click)="add()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
+</ion-content>

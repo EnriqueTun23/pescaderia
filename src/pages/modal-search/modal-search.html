@@ -1,0 +1,26 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    
+      <ion-buttons start>
+        
+      </ion-buttons>
+      <ion-title>Modal {{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+    <ion-searchbar (ionInput)="getItems($event)"  placeholder="Buscar..."></ion-searchbar>
+ <!-- <button ion-button color="personalizado1" (click)="ver_marca()">Ver valores de check</button>-->
+  <ion-list radio-group *ngFor="let val of items " (ionChange)="onSelectChange($event)" >
+    
+    <ion-item style="font-size:22px;">
+      <ion-label>{{val.nombre}}</ion-label>
+      <ion-radio  [value]="val"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>

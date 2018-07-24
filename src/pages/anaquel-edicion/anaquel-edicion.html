@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title text-center>
+      Editar anaquel
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item style="font-size:22px;">
+      <ion-label>Anaquel:</ion-label>
+      <ion-select disabled="true" [(ngModel)]="AnaquelSelect">
+        <ion-option checked="true" [value]="Value_anaquel" >
+          {{name_anaquel}}
+        </ion-option>
+      </ion-select>
+  
+    </ion-item>
+    
+    <ion-item style="font-size:22px;">
+      <ion-label>Lote:</ion-label>
+      <ion-select disabled="true" [(ngModel)]="LoteSelect">
+        <ion-option checked="true" [value]="Value_lote">
+        {{name_lote}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item style="font-size:22px;">
+      <ion-label>Congelador:</ion-label>
+      <ion-select disabled='true'  [(ngModel)]="CongeladorSelect">
+        <ion-option checked="true" [value]="Value_congelador">
+        <!--  {{anaquel?.congelador?.numero}}-->
+        {{name_congelador}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  
+  <ion-grid>
+    <ion-row *ngFor="let rows of matriz;" >
+      <ion-col *ngFor="let item of rows;">
+        <button ion-button  outline [color]="item.color" value="{{item.fila}}+','+{{item.columna}}" (click)="addEmpaque(item)" >
+          <ion-icon [name]="item.icon"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

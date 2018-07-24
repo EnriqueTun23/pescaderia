@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      Pesar
+    </ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1><b>Lote: </b>{{Lista.lote}}</h1>
+  <h1><b>Producto: </b>{{Lista.producto.nombre_comun}}</h1>
+
+  <form [formGroup]="formulario" novalidate >
+    <ion-item style="font-size:22px;">
+      <ion-label>Talla</ion-label>
+      <ion-select formControlName="talla" (ionChange)="onSelectChange($event)" interface="popover">
+        <ion-option *ngFor="let x of TallaP2" [value]="x.id" >{{x.talla}}</ion-option>
+      </ion-select>
+    </ion-item>
+      <ion-item [hidden]="!carga" style="font-size:22px;">
+        <ion-label>Calidad</ion-label>
+     
+          <ion-select formControlName="calidad" interface="popover">
+          <ion-option *ngFor="let x of Calidad" [value]="x.id">{{x.nombre}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item [hidden]="!carga2">
+        <ion-label >¿es cabeza?</ion-label>
+        <ion-toggle formControlName="cabeza"></ion-toggle>
+      </ion-item>
+      
+      <h2 ><b>Empaque:</b> {{Producto_peso}} </h2>
+  <!--    <div [hidden]="carga3">
+        <h2>
+          <b>Maximo:</b> {{Producto_maximo}} </h2>
+      </div>
+    -->
+    <ion-label [color]="color">
+     <h2> <b>Maximo:</b> {{Producto_maximo}}</h2>
+    </ion-label>
+        
+     <!-- <ion-item>
+       <ion-label >Peso</ion-label>
+       <ion-input #focusInput formControlName="peso" [(ngModel)]="Value" type="number"></ion-input>
+     </ion-item> -->
+
+     <div class="row">
+        <div class="col col-50">
+            <button ion-button outline (click)="LeerPeso()">Leer Peso</button>
+        </div>
+      <div class="col col-50">
+        <ion-input class="peso" formControlName="pesorequired" [(ngModel)]="TEXTO" [readonly]="true" type="text" text-center></ion-input>
+      </div>
+    </div>
+
+  <div class="buttons">
+    <button ion-button color="personalizado2" (click)="Cancelar()">Cancelar</button>
+    <button ion-button color="personalizado3" (click)="GuardaryContinuar()" [disabled]="formulario.invalid">Guardar y Agregar otro</button>
+    <button ion-button color="personalizado1" (click)="Guardar()" [disabled]="formulario.invalid">Guardar</button>
+  </div>
+</form>
+</ion-content>

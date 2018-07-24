@@ -1,0 +1,50 @@
+
+<ion-menu [content]="mycontent" swipeEnabled="false">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title class="menu">Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list inset>
+            <ion-item (click)="paginas(inicioHora)" >
+                <ion-avatar item-start>
+                    <img src="assets/imgs/isotipo-01.png">
+                </ion-avatar>
+                <span class="texto1">
+                <h2>{{username}}</h2>
+                <p >Version:0.0.1</p>
+                </span>
+            </ion-item>
+          
+            <button ion-item  *ngIf="permisos.is_admin || permisos.is_recepcion"  (click)="paginas(inicio)" detail-none>
+            <span class="texto1">
+                <ion-icon name="md-cart" item-start></ion-icon>
+                Recepción </span>
+            </button>
+            <button ion-item class="texto1" *ngIf="permisos.is_admin || permisos.is_pesaje"  (click)="paginas(clasificar)" detail-none>
+                <span class="texto1">
+                <ion-icon name="md-swap" item-start></ion-icon>
+                Peso para venta</span>
+            </button>
+            <button ion-item class="texto1" *ngIf="permisos.is_admin || permisos.is_anaqueles"  (click)="paginas(almacen)" detail-none>
+               <span class="texto1">
+                <ion-icon name="md-cube" item-start></ion-icon>
+                Anaquel </span>
+            </button>
+            <button ion-item class="texto1" *ngIf="permisos.is_admin"  (click)="paginas(configuracion)" detail-none>
+                <span class="texto1">
+                <ion-icon name="md-settings" item-start></ion-icon>
+                Configuracion </span>
+            </button>
+            <button ion-item class="texto1" (click)="logout()" detail-none>
+                <span class="texto1">
+                <ion-icon name="md-log-out" item-start></ion-icon>
+                Salir
+                </span>
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #mycontent></ion-nav>

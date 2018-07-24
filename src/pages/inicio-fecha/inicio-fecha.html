@@ -1,0 +1,31 @@
+<!--
+  Generated template for the InicioFechaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Inicio</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<h1 text-center margin>Fecha</h1>
+<h1>  
+<ion-datetime text-center margin (ionChange)="dates($event)" displayFormat="DD-MMMM-YYYY"  [(ngModel)]="myDate" monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre" monthShortNames="Ene, Feb, Mar, Abri, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic" ></ion-datetime>
+</h1>
+
+    <ion-item style="font-size:22px;">
+      <ion-label fixed>Bodega</ion-label>
+      <ion-select  [placeholder]="Bodega_nombre" (ionChange)="onSelectChange($event)">
+        <ion-option *ngFor="let bodega of Bodega" [value]="bodega.id">{{bodega.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+</ion-content>
